@@ -25,6 +25,7 @@ futures         = { workspace = true }
 openraft-macros = { path = "../macros", version = "0.10.0" }
 maplit          = { workspace = true }
 rand            = { workspace = true }
+rkyv            = { workspace = true, optional = true }
 serde           = { workspace = true, optional = true }
 serde_json      = { workspace = true, optional = true }
 thiserror       = { workspace = true }
@@ -61,6 +62,10 @@ bt  = ["anyerror/backtrace", "anyhow/backtrace"]
 # Add serde::Serialize and serde:Deserialize bound to data types.
 # If you'd like to use `serde` to serialize messages.
 serde = ["dep:serde"]
+
+# Add rkyv::Archive, rkyv::Serialize and rkyv::Deserialize bound to data types.
+# If you'd like to use `rkyv` to serialize messages.
+rkyv = ["dep:rkyv"]
 
 # This feature is removed.
 # Use `openraft::impls::leader_id_std::Leader` for `RaftTypeConfig`
@@ -115,6 +120,7 @@ tracing-log = [ "tracing/log" ]
 features = [
     "bt",
     "compat",
+    "rkyv",
     "serde",
     "tracing-log",
 ]

@@ -9,6 +9,7 @@ use crate::vote::raft_vote::RaftVoteExt;
 /// `Vote` represent the privilege of a node.
 #[derive(Debug, Clone, Copy, Default, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize), serde(bound = ""))]
+#[cfg_attr(feature = "rkyv", derive(rkyv::Archive, rkyv::Deserialize, rkyv::Serialize))]
 pub struct Vote<C: RaftTypeConfig> {
     /// The id of the node that tries to become the leader.
     pub leader_id: C::LeaderId,
@@ -99,6 +100,23 @@ mod tests {
 
             let v2: Vote<UTConfig> = serde_json::from_str(&s)?;
             assert_eq!(v, v2);
+
+            Ok(())
+        }
+
+        #[cfg(feature = "rkyv")]
+        #[test]
+        fn test_vote_rkyv() -> anyhow::Result<()> {
+            use rkyv::rancor::Error;
+
+            let v = Vote::new(1, 2);
+
+            // Serialize
+            let bytes = rkyv::to_bytes::<Error>(&v)?;
+
+            // Deserialize back
+            let deserialized: Vote<UTConfig> = rkyv::from_bytes::<_, Error>(&bytes)?;
+            assert_eq!(deserialized, v);
 
             Ok(())
         }

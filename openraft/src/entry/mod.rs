@@ -19,6 +19,7 @@ use crate::type_config::alias::LogIdOf;
 
 /// A Raft log entry.
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize), serde(bound = ""))]
+#[cfg_attr(feature = "rkyv", derive(rkyv::Archive, rkyv::Deserialize, rkyv::Serialize))]
 pub struct Entry<C>
 where C: RaftTypeConfig
 {
@@ -107,5 +108,34 @@ where C: RaftTypeConfig
 
     fn set_log_id(&mut self, new: LogIdOf<C>) {
         self.log_id = new;
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[cfg(feature = "rkyv")]
+    #[test]
+    fn test_entry_rkyv() -> anyhow::Result<()> {
+        use rkyv::rancor::Error;
+
+        use crate::LogId;
+        use crate::engine::testing::UTConfig;
+
+        let log_id = LogId::new(crate::impls::leader_id_adv::LeaderId { term: 1, node_id: 2 }, 10);
+        let entry = Entry::<UTConfig> {
+            log_id,
+            payload: EntryPayload::Blank,
+        };
+
+        // Serialize
+        let bytes = rkyv::to_bytes::<Error>(&entry)?;
+
+        // Deserialize back
+        let deserialized: Entry<UTConfig> = rkyv::from_bytes::<_, Error>(&bytes)?;
+        assert_eq!(deserialized, entry);
+
+        Ok(())
     }
 }
