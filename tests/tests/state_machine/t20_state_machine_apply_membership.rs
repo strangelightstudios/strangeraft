@@ -2,11 +2,11 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::LogIdOptionExt;
-use openraft::Membership;
-use openraft::StoredMembership;
-use openraft::storage::RaftStateMachine;
+use strangeraft::Config;
+use strangeraft::LogIdOptionExt;
+use strangeraft::Membership;
+use strangeraft::StoredMembership;
+use strangeraft::storage::RaftStateMachine;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;

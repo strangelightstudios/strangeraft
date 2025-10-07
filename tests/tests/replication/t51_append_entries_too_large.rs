@@ -5,10 +5,10 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::RPCTypes;
-use openraft::error::PayloadTooLarge;
-use openraft::raft::AppendEntriesRequest;
+use strangeraft::Config;
+use strangeraft::RPCTypes;
+use strangeraft::error::PayloadTooLarge;
+use strangeraft::raft::AppendEntriesRequest;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;

@@ -2,13 +2,13 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use maplit::btreeset;
-use openraft::Config;
-use openraft::RaftLogReader;
-use openraft::ServerState;
-use openraft::Vote;
-use openraft::storage::RaftLogStorage;
-use openraft::vote::RaftLeaderId;
-use openraft::vote::RaftLeaderIdExt;
+use strangeraft::Config;
+use strangeraft::RaftLogReader;
+use strangeraft::ServerState;
+use strangeraft::Vote;
+use strangeraft::storage::RaftLogStorage;
+use strangeraft::vote::RaftLeaderId;
+use strangeraft::vote::RaftLeaderIdExt;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;

@@ -3,13 +3,13 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::RaftLogReader;
-use openraft::ServerState;
-use openraft::Vote;
-use openraft::storage::RaftLogStorage;
-use openraft::storage::RaftLogStorageExt;
-use openraft::testing::blank_ent;
+use strangeraft::Config;
+use strangeraft::RaftLogReader;
+use strangeraft::ServerState;
+use strangeraft::Vote;
+use strangeraft::storage::RaftLogStorage;
+use strangeraft::storage::RaftLogStorageExt;
+use strangeraft::testing::blank_ent;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;
@@ -18,7 +18,7 @@ use crate::fixtures::ut_harness;
 ///
 /// Reproduce the bug that when append-entries, if there are more than 50 inconsistent logs the
 /// conflict is always set to `last_log`, which blocks replication for ever.
-/// https://github.com/drmingdrmer/openraft/blob/79a39970855d80e1d3b761fadbce140ecf1da59e/async-raft/src/core/append_entries.rs#L131-L154
+/// https://github.com/drmingdrmer/strangeraft/blob/79a39970855d80e1d3b761fadbce140ecf1da59e/async-raft/src/core/append_entries.rs#L131-L154
 ///
 /// - fake a cluster of node 0,1,2. R0 has ~100 uncommitted log at term 2. R2 has ~100 uncommitted
 ///   log at term 3.

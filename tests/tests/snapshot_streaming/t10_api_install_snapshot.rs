@@ -2,10 +2,10 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::Vote;
-use openraft::raft::InstallSnapshotRequest;
-use openraft::storage::SnapshotMeta;
+use strangeraft::Config;
+use strangeraft::Vote;
+use strangeraft::raft::InstallSnapshotRequest;
+use strangeraft::storage::SnapshotMeta;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;

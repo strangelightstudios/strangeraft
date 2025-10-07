@@ -3,9 +3,9 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::Raft;
-use openraft::ServerState;
+use strangeraft::Config;
+use strangeraft::Raft;
+use strangeraft::ServerState;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;

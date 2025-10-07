@@ -3,7 +3,7 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
+use strangeraft::Config;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;

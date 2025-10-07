@@ -2,12 +2,12 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use maplit::btreeset;
-use openraft::Config;
-use openraft::LogIdOptionExt;
-use openraft::RaftLogReader;
-use openraft::ServerState;
-use openraft::error::ChangeMembershipError;
-use openraft::error::ClientWriteError;
+use strangeraft::Config;
+use strangeraft::LogIdOptionExt;
+use strangeraft::RaftLogReader;
+use strangeraft::ServerState;
+use strangeraft::error::ChangeMembershipError;
+use strangeraft::error::ClientWriteError;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;

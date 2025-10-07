@@ -3,15 +3,15 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::Entry;
-use openraft::RaftLogReader;
-use openraft::RaftTypeConfig;
-use openraft::ServerState;
-use openraft::Vote;
-use openraft::raft::AppendEntriesRequest;
-use openraft::storage::RaftLogStorage;
-use openraft::testing::blank_ent;
+use strangeraft::Config;
+use strangeraft::Entry;
+use strangeraft::RaftLogReader;
+use strangeraft::RaftTypeConfig;
+use strangeraft::ServerState;
+use strangeraft::Vote;
+use strangeraft::raft::AppendEntriesRequest;
+use strangeraft::storage::RaftLogStorage;
+use strangeraft::testing::blank_ent;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;
@@ -229,7 +229,7 @@ where
 {
     let logs = log_store.get_log_reader().await.try_get_log_entries(..).await?;
     let skip = 0;
-    let want: Vec<Entry<openraft_memstore::TypeConfig>> = terms
+    let want: Vec<Entry<strangeraft_memstore::TypeConfig>> = terms
         .iter()
         .skip(skip)
         .enumerate()

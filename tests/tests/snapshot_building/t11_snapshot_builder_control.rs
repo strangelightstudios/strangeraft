@@ -3,10 +3,10 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::SnapshotMeta;
-use openraft::SnapshotPolicy;
-use openraft::storage::RaftStateMachine;
+use strangeraft::Config;
+use strangeraft::SnapshotMeta;
+use strangeraft::SnapshotPolicy;
+use strangeraft::storage::RaftStateMachine;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;

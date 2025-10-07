@@ -1,10 +1,10 @@
 use std::sync::Arc;
 use std::time::Duration;
 
-use openraft::Config;
-use openraft::ServerState;
-use openraft::Vote;
-use openraft::storage::RaftLogStorage;
+use strangeraft::Config;
+use strangeraft::ServerState;
+use strangeraft::Vote;
+use strangeraft::storage::RaftLogStorage;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;

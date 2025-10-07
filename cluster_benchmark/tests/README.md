@@ -1,4 +1,4 @@
-# Benchmark openraft cluster
+# Benchmark strangeraft cluster
 
 It builds a cluster locally with a **minimized** store and network layer,
-and is meant to benchmark and find performance bottleneck of the openraft framework.
+and is meant to benchmark and find performance bottleneck of the strangeraft framework.

@@ -2,7 +2,7 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
+use strangeraft::Config;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;

@@ -2,16 +2,16 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use anyhow::Result;
-use openraft::Config;
-use openraft::Entry;
-use openraft::EntryPayload;
-use openraft::Vote;
-use openraft::network::RPCOption;
-use openraft::network::RaftNetworkFactory;
-use openraft::network::v2::RaftNetworkV2;
-use openraft::raft::AppendEntriesRequest;
-use openraft::testing::blank_ent;
-use openraft_memstore::ClientRequest;
+use strangeraft::Config;
+use strangeraft::Entry;
+use strangeraft::EntryPayload;
+use strangeraft::Vote;
+use strangeraft::network::RPCOption;
+use strangeraft::network::RaftNetworkFactory;
+use strangeraft::network::v2::RaftNetworkV2;
+use strangeraft::raft::AppendEntriesRequest;
+use strangeraft::testing::blank_ent;
+use strangeraft_memstore::ClientRequest;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;
@@ -52,7 +52,7 @@ async fn conflict_with_empty_entries() -> Result<()> {
 
     // Expect conflict even if the message contains no entries.
 
-    let rpc = AppendEntriesRequest::<openraft_memstore::TypeConfig> {
+    let rpc = AppendEntriesRequest::<strangeraft_memstore::TypeConfig> {
         vote: Vote::new_committed(1, 1),
         prev_log_id: Some(log_id(1, 0, 5)),
         entries: vec![],
@@ -66,7 +66,7 @@ async fn conflict_with_empty_entries() -> Result<()> {
 
     // Feed logs
 
-    let rpc = AppendEntriesRequest::<openraft_memstore::TypeConfig> {
+    let rpc = AppendEntriesRequest::<strangeraft_memstore::TypeConfig> {
         vote: Vote::new_committed(1, 1),
         prev_log_id: None,
         entries: vec![blank_ent(0, 0, 0), blank_ent(1, 0, 1), Entry {
@@ -88,7 +88,7 @@ async fn conflict_with_empty_entries() -> Result<()> {
 
     // Expect a conflict with prev_log_index == 3
 
-    let rpc = AppendEntriesRequest::<openraft_memstore::TypeConfig> {
+    let rpc = AppendEntriesRequest::<strangeraft_memstore::TypeConfig> {
         vote: Vote::new_committed(1, 1),
         prev_log_id: Some(log_id(1, 0, 3)),
         entries: vec![],

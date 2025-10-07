@@ -3,10 +3,10 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::LogIdOptionExt;
-use openraft::ServerState;
-use openraft::storage::RaftStateMachine;
+use strangeraft::Config;
+use strangeraft::LogIdOptionExt;
+use strangeraft::ServerState;
+use strangeraft::storage::RaftStateMachine;
 use tokio::sync::watch;
 
 use crate::fixtures::RaftRouter;

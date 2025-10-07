@@ -2,9 +2,9 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::ServerState;
-use openraft::error::Fatal;
+use strangeraft::Config;
+use strangeraft::ServerState;
+use strangeraft::error::Fatal;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;

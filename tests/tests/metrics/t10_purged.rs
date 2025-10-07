@@ -3,8 +3,8 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::storage::RaftLogStorage;
+use strangeraft::Config;
+use strangeraft::storage::RaftLogStorage;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;

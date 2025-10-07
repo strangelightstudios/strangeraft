@@ -2,8 +2,8 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::SnapshotPolicy;
+use strangeraft::Config;
+use strangeraft::SnapshotPolicy;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;

@@ -2,12 +2,12 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::Entry;
-use openraft::EntryPayload;
-use openraft::Membership;
-use openraft::Raft;
-use openraft::storage::RaftLogStorageExt;
+use strangeraft::Config;
+use strangeraft::Entry;
+use strangeraft::EntryPayload;
+use strangeraft::Membership;
+use strangeraft::Raft;
+use strangeraft::storage::RaftLogStorageExt;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;
@@ -15,7 +15,7 @@ use crate::fixtures::ut_harness;
 
 /// Cluster members_leader_fix_partial test.
 /// TODO(xp): in discussion: whether a leader should auto commit a uniform membership config:
-/// https://github.com/databendlabs/openraft/discussions/17
+/// https://github.com/databendlabs/strangeraft/discussions/17
 ///
 /// - brings up 1 leader.
 /// - manually append a joint config log.

@@ -2,14 +2,14 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::error::Fatal;
+use strangeraft::Config;
+use strangeraft::error::Fatal;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;
 use crate::fixtures::ut_harness;
 
-/// Access Raft state via [`Raft::with_raft_state()`](openraft::Raft::with_raft_state)
+/// Access Raft state via [`Raft::with_raft_state()`](strangeraft::Raft::with_raft_state)
 #[tracing::instrument]
 #[test_harness::test(harness = ut_harness)]
 async fn with_raft_state() -> Result<()> {

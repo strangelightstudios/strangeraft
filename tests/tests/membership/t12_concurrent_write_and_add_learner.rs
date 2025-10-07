@@ -4,10 +4,10 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::LogIdOptionExt;
-use openraft::ServerState;
-use openraft::Vote;
+use strangeraft::Config;
+use strangeraft::LogIdOptionExt;
+use strangeraft::ServerState;
+use strangeraft::Vote;
 use tracing::Instrument;
 
 use crate::fixtures::RaftRouter;

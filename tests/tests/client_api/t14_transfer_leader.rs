@@ -2,16 +2,16 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use maplit::btreeset;
-use openraft::Config;
-use openraft::ServerState;
-use openraft::raft::TransferLeaderRequest;
+use strangeraft::Config;
+use strangeraft::ServerState;
+use strangeraft::raft::TransferLeaderRequest;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;
 
 /// Test handling of transfer leader request.
 ///
-/// Call [`handle_transfer_leader`](openraft::raft::Raft::handle_transfer_leader) on every
+/// Call [`handle_transfer_leader`](strangeraft::raft::Raft::handle_transfer_leader) on every
 /// non-leader node to force establish a new leader.
 #[tracing::instrument]
 #[test_harness::test(harness = ut_harness)]
@@ -69,7 +69,7 @@ async fn transfer_leader() -> anyhow::Result<()> {
 
 /// Test trigger transfer leader on the Leader.
 ///
-/// Call [`trigger().transfer_leader()`](openraft::raft::trigger::Trigger::transfer_leader) on the
+/// Call [`trigger().transfer_leader()`](strangeraft::raft::trigger::Trigger::transfer_leader) on the
 /// Leader node to force establish a new leader.
 #[tracing::instrument]
 #[test_harness::test(harness = ut_harness)]

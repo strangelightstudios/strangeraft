@@ -3,14 +3,14 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::Vote;
-use openraft::network::RPCOption;
-use openraft::network::RaftNetworkFactory;
-use openraft::network::v2::RaftNetworkV2;
-use openraft::raft::AppendEntriesRequest;
-use openraft::testing::blank_ent;
-use openraft_memstore::BlockOperation;
+use strangeraft::Config;
+use strangeraft::Vote;
+use strangeraft::network::RPCOption;
+use strangeraft::network::RaftNetworkFactory;
+use strangeraft::network::v2::RaftNetworkV2;
+use strangeraft::raft::AppendEntriesRequest;
+use strangeraft::testing::blank_ent;
+use strangeraft_memstore::BlockOperation;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;
@@ -61,7 +61,7 @@ async fn building_snapshot_does_not_block_append() -> Result<()> {
         "--- send append-entries request to the follower that is building snapshot"
     );
     {
-        let rpc = AppendEntriesRequest::<openraft_memstore::TypeConfig> {
+        let rpc = AppendEntriesRequest::<strangeraft_memstore::TypeConfig> {
             vote: Vote::new_committed(1, 0),
             prev_log_id: Some(log_id(1, 0, log_index)),
             entries: vec![blank_ent(1, 0, 15)],

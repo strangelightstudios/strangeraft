@@ -1,0 +1,8 @@
+fn main() {
+    macros::expand!(
+        !KEYED,
+        (K, T, V) => {K; T; V;},
+        (c, , ),
+        (c, , u8, ),
+    );
+}

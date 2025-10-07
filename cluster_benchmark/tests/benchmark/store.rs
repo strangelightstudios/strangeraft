@@ -8,23 +8,23 @@ use std::sync::atomic::AtomicU64;
 use std::sync::atomic::Ordering;
 use std::sync::Arc;
 
-use openraft::alias::LogIdOf;
-use openraft::alias::SnapshotDataOf;
-use openraft::entry::RaftEntry;
-use openraft::storage::IOFlushed;
-use openraft::storage::LogState;
-use openraft::storage::RaftLogReader;
-use openraft::storage::RaftLogStorage;
-use openraft::storage::RaftSnapshotBuilder;
-use openraft::storage::RaftStateMachine;
-use openraft::storage::Snapshot;
-use openraft::Entry;
-use openraft::EntryPayload;
-use openraft::OptionalSend;
-use openraft::SnapshotMeta;
-use openraft::StorageError;
-use openraft::StoredMembership;
-use openraft::Vote;
+use strangeraft::alias::LogIdOf;
+use strangeraft::alias::SnapshotDataOf;
+use strangeraft::entry::RaftEntry;
+use strangeraft::storage::IOFlushed;
+use strangeraft::storage::LogState;
+use strangeraft::storage::RaftLogReader;
+use strangeraft::storage::RaftLogStorage;
+use strangeraft::storage::RaftSnapshotBuilder;
+use strangeraft::storage::RaftStateMachine;
+use strangeraft::storage::Snapshot;
+use strangeraft::Entry;
+use strangeraft::EntryPayload;
+use strangeraft::OptionalSend;
+use strangeraft::SnapshotMeta;
+use strangeraft::StorageError;
+use strangeraft::StoredMembership;
+use strangeraft::Vote;
 use serde::Deserialize;
 use serde::Serialize;
 use tokio::sync::RwLock;
@@ -40,12 +40,12 @@ pub type NodeId = u64;
 /// Choose a LeaderId implementation by feature flag.
 mod leader_id_mode {
     #[cfg(not(feature = "single-term-leader"))]
-    pub use openraft::impls::leader_id_adv::LeaderId;
+    pub use strangeraft::impls::leader_id_adv::LeaderId;
     #[cfg(feature = "single-term-leader")]
-    pub use openraft::impls::leader_id_std::LeaderId;
+    pub use strangeraft::impls::leader_id_std::LeaderId;
 }
 
-openraft::declare_raft_types!(
+strangeraft::declare_raft_types!(
     pub TypeConfig:
         D = ClientRequest,
         R = ClientResponse,

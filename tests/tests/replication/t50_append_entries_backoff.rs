@@ -4,10 +4,10 @@ use std::time::Duration;
 use anyerror::AnyError;
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::RPCTypes;
-use openraft::error::RPCError;
-use openraft::error::Unreachable;
+use strangeraft::Config;
+use strangeraft::RPCTypes;
+use strangeraft::error::RPCError;
+use strangeraft::error::Unreachable;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;

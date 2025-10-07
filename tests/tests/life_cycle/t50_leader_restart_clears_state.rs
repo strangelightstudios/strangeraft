@@ -2,8 +2,8 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use maplit::btreemap;
-use openraft::Config;
-use openraft::ServerState;
+use strangeraft::Config;
+use strangeraft::ServerState;
 
 use crate::fixtures::MemLogStore;
 use crate::fixtures::MemRaft;

@@ -3,12 +3,12 @@ use std::sync::Arc;
 use anyhow::Result;
 use futures::prelude::*;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::SnapshotPolicy;
-use openraft::raft::ClientWriteResponse;
-use openraft_memstore::ClientRequest;
-use openraft_memstore::IntoMemClientRequest;
-use openraft_memstore::TypeConfig;
+use strangeraft::Config;
+use strangeraft::SnapshotPolicy;
+use strangeraft::raft::ClientWriteResponse;
+use strangeraft_memstore::ClientRequest;
+use strangeraft_memstore::IntoMemClientRequest;
+use strangeraft_memstore::TypeConfig;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;

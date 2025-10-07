@@ -4,10 +4,10 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::TokioInstant;
-use openraft::Vote;
-use openraft::raft::VoteRequest;
+use strangeraft::Config;
+use strangeraft::TokioInstant;
+use strangeraft::Vote;
+use strangeraft::raft::VoteRequest;
 use tokio::time::sleep;
 
 use crate::fixtures::RaftRouter;

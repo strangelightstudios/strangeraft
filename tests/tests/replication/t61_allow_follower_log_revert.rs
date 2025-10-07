@@ -3,11 +3,11 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::error::AllowNextRevertError;
-use openraft::error::ForwardToLeader;
-use openraft::error::NodeNotFound;
-use openraft::error::Operation;
+use strangeraft::Config;
+use strangeraft::error::AllowNextRevertError;
+use strangeraft::error::ForwardToLeader;
+use strangeraft::error::NodeNotFound;
+use strangeraft::error::Operation;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;
@@ -49,7 +49,7 @@ async fn allow_follower_log_revert() -> Result<()> {
     tracing::info!(log_index, "--- erase Learner-1 and restart");
     {
         let (_raft, _ls, _sm) = router.remove_node(1).unwrap();
-        let (log, sm) = openraft_memstore::new_mem_store();
+        let (log, sm) = strangeraft_memstore::new_mem_store();
 
         router.new_raft_node_with_sto(1, log, sm).await;
         router.add_learner(0, 1).await?;

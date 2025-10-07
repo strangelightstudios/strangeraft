@@ -1,0 +1,31 @@
+[package]
+name = "strangeraft-memstore"
+description = "A in-memory implementation of the `strangeraft::RaftLogStorage` and `strangeraft::RaftStateMachine` trait."
+documentation = "https://docs.rs/strangeraft-memstore"
+readme = "README.md"
+
+version       = { workspace = true }
+edition       = { workspace = true }
+authors       = { workspace = true }
+categories    = { workspace = true }
+homepage      = { workspace = true }
+keywords      = { workspace = true }
+license       = { workspace = true }
+repository    = { workspace = true }
+
+[dependencies]
+strangeraft = { path= "../../strangeraft", version = "0.10.0", features=["serde", "type-alias"] }
+
+serde           = { workspace = true }
+serde_json      = { workspace = true }
+tokio           = { workspace = true }
+tracing         = { workspace = true }
+
+[dev-dependencies]
+
+[features]
+bt = ["strangeraft/bt"]
+single-term-leader = []
+
+[package.metadata.docs.rs]
+all-features = true

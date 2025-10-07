@@ -6,7 +6,7 @@ use std::time::Duration;
 use std::time::Instant;
 
 use maplit::btreeset;
-use openraft::Config;
+use strangeraft::Config;
 use tokio::runtime::Builder;
 
 use crate::network::Router;

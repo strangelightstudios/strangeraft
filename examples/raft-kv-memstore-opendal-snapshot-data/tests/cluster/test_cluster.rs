@@ -4,7 +4,7 @@ use std::collections::HashMap;
 use std::panic::PanicHookInfo;
 use std::time::Duration;
 
-use openraft::BasicNode;
+use strangeraft::BasicNode;
 use raft_kv_memstore_opendal_snapshot_data::new_raft;
 use raft_kv_memstore_opendal_snapshot_data::router::Router;
 use raft_kv_memstore_opendal_snapshot_data::store::Request;

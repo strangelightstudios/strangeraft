@@ -2,8 +2,8 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use maplit::btreemap;
-use openraft::ChangeMembers;
-use openraft::Config;
+use strangeraft::ChangeMembers;
+use strangeraft::Config;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;

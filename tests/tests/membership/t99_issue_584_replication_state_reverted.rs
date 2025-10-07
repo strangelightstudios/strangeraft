@@ -3,7 +3,7 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
+use strangeraft::Config;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;
@@ -12,7 +12,7 @@ use crate::fixtures::ut_harness;
 #[test_harness::test(harness = ut_harness)]
 async fn t99_issue_584_replication_state_reverted() -> Result<()> {
     // - Add a learner and replicate all logs to it.
-    // - Add the learner as a voter. When membership changes, openraft internally restarts all
+    // - Add the learner as a voter. When membership changes, strangeraft internally restarts all
     //   replication.
     //
     // This case asserts it does not break the internal monotonic-replication-progress guarantee.

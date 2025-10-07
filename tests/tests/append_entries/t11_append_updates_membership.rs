@@ -3,14 +3,14 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::Entry;
-use openraft::EntryPayload;
-use openraft::Membership;
-use openraft::ServerState;
-use openraft::Vote;
-use openraft::raft::AppendEntriesRequest;
-use openraft::testing::blank_ent;
+use strangeraft::Config;
+use strangeraft::Entry;
+use strangeraft::EntryPayload;
+use strangeraft::Membership;
+use strangeraft::ServerState;
+use strangeraft::Vote;
+use strangeraft::raft::AppendEntriesRequest;
+use strangeraft::testing::blank_ent;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;

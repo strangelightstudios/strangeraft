@@ -3,13 +3,13 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::ServerState;
-use openraft::Vote;
-use openraft::storage::RaftLogStorage;
-use openraft::storage::RaftLogStorageExt;
-use openraft::testing::blank_ent;
-use openraft::testing::membership_ent;
+use strangeraft::Config;
+use strangeraft::ServerState;
+use strangeraft::Vote;
+use strangeraft::storage::RaftLogStorage;
+use strangeraft::storage::RaftLogStorageExt;
+use strangeraft::testing::blank_ent;
+use strangeraft::testing::membership_ent;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;

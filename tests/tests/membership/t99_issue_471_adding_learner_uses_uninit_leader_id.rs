@@ -2,14 +2,14 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
+use strangeraft::Config;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;
 
 /// When adding learner and waiting for the learner to become up to date,
 /// it should not try to use `matched.leader_id` which may be uninitialized, i.e., `(0,0)`.
-/// https://github.com/databendlabs/openraft/issues/471
+/// https://github.com/databendlabs/strangeraft/issues/471
 ///
 /// - Brings up 1 leader.
 /// - Add learner at once.

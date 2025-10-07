@@ -7,7 +7,7 @@ use std::time::Duration;
 use client_http::ExampleClient;
 use maplit::btreemap;
 use maplit::btreeset;
-use openraft::BasicNode;
+use strangeraft::BasicNode;
 use raft_kv_memstore::start_example_raft_node;
 use raft_kv_memstore::store::Request;
 use raft_kv_memstore::TypeConfig;

@@ -2,20 +2,20 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::Entry;
-use openraft::OptionalSend;
-use openraft::RaftSnapshotBuilder;
-use openraft::RaftTypeConfig;
-use openraft::StorageError;
-use openraft::StoredMembership;
-use openraft::alias::LogIdOf;
-use openraft::error::Fatal;
-use openraft::storage::RaftStateMachine;
-use openraft::storage::Snapshot;
-use openraft::storage::SnapshotMeta;
-use openraft_memstore::ClientResponse;
-use openraft_memstore::TypeConfig;
+use strangeraft::Config;
+use strangeraft::Entry;
+use strangeraft::OptionalSend;
+use strangeraft::RaftSnapshotBuilder;
+use strangeraft::RaftTypeConfig;
+use strangeraft::StorageError;
+use strangeraft::StoredMembership;
+use strangeraft::alias::LogIdOf;
+use strangeraft::error::Fatal;
+use strangeraft::storage::RaftStateMachine;
+use strangeraft::storage::Snapshot;
+use strangeraft::storage::SnapshotMeta;
+use strangeraft_memstore::ClientResponse;
+use strangeraft_memstore::TypeConfig;
 
 use crate::fixtures::MemStateMachine;
 use crate::fixtures::RaftRouter;
@@ -23,7 +23,7 @@ use crate::fixtures::log_id;
 use crate::fixtures::ut_harness;
 
 /// Access [`RaftStateMachine`] via
-/// [`Raft::with_state_machine()`](openraft::Raft::with_state_machine)
+/// [`Raft::with_state_machine()`](strangeraft::Raft::with_state_machine)
 #[tracing::instrument]
 #[test_harness::test(harness = ut_harness)]
 async fn with_state_machine() -> Result<()> {
@@ -65,7 +65,7 @@ async fn with_state_machine() -> Result<()> {
     Ok(())
 }
 
-/// Call [`Raft::with_state_machine()`](openraft::Raft::with_state_machine) with wrong type
+/// Call [`Raft::with_state_machine()`](strangeraft::Raft::with_state_machine) with wrong type
 /// [`RaftStateMachine`]
 #[tracing::instrument]
 #[test_harness::test(harness = ut_harness)]

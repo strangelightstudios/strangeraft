@@ -3,9 +3,9 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::type_config::TypeConfigExt;
-use openraft_memstore::TypeConfig;
+use strangeraft::Config;
+use strangeraft::type_config::TypeConfigExt;
+use strangeraft_memstore::TypeConfig;
 #[allow(unused_imports)]
 use pretty_assertions::assert_eq;
 #[allow(unused_imports)]

@@ -2,9 +2,9 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use maplit::btreeset;
-use openraft::Config;
-use openraft::storage::RaftLogStorage;
-use openraft::storage::RaftStateMachine;
+use strangeraft::Config;
+use strangeraft::storage::RaftLogStorage;
+use strangeraft::storage::RaftStateMachine;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;

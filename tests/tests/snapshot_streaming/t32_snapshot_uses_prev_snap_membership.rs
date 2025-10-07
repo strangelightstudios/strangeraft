@@ -3,11 +3,11 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::Membership;
-use openraft::RaftLogReader;
-use openraft::SnapshotPolicy;
-use openraft::StorageHelper;
+use strangeraft::Config;
+use strangeraft::Membership;
+use strangeraft::RaftLogReader;
+use strangeraft::SnapshotPolicy;
+use strangeraft::StorageHelper;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;

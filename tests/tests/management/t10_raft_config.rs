@@ -2,12 +2,12 @@ use std::sync::Arc;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
+use strangeraft::Config;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;
 
-/// Get config via [`Raft::config`](openraft::Raft::config)
+/// Get config via [`Raft::config`](strangeraft::Raft::config)
 #[tracing::instrument]
 #[test_harness::test(harness = ut_harness)]
 async fn raft_config() -> Result<()> {

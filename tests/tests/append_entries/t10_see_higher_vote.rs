@@ -3,14 +3,14 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::ServerState;
-use openraft::Vote;
-use openraft::network::RPCOption;
-use openraft::network::RaftNetworkFactory;
-use openraft::network::v2::RaftNetworkV2;
-use openraft::raft::VoteRequest;
-use openraft_memstore::ClientRequest;
+use strangeraft::Config;
+use strangeraft::ServerState;
+use strangeraft::Vote;
+use strangeraft::network::RPCOption;
+use strangeraft::network::RaftNetworkFactory;
+use strangeraft::network::v2::RaftNetworkV2;
+use strangeraft::raft::VoteRequest;
+use strangeraft_memstore::ClientRequest;
 use tokio::time::sleep;
 
 use crate::fixtures::RaftRouter;

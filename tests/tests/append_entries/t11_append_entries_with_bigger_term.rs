@@ -3,12 +3,12 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::Vote;
-use openraft::network::RPCOption;
-use openraft::network::RaftNetworkFactory;
-use openraft::network::v2::RaftNetworkV2;
-use openraft::raft::AppendEntriesRequest;
+use strangeraft::Config;
+use strangeraft::Vote;
+use strangeraft::network::RPCOption;
+use strangeraft::network::RaftNetworkFactory;
+use strangeraft::network::v2::RaftNetworkV2;
+use strangeraft::raft::AppendEntriesRequest;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;
@@ -38,7 +38,7 @@ async fn append_entries_with_bigger_term() -> Result<()> {
     router.assert_storage_state(1, log_index, Some(0), log_id(1, 0, log_index), None).await?;
 
     // append entries with term 2 and leader_id, this MUST cause hard state changed in node 0
-    let req = AppendEntriesRequest::<openraft_memstore::TypeConfig> {
+    let req = AppendEntriesRequest::<strangeraft_memstore::TypeConfig> {
         vote: Vote::new_committed(2, 1),
         prev_log_id: Some(log_id(1, 0, log_index)),
         entries: vec![],

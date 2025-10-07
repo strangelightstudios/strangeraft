@@ -1,0 +1,24 @@
+use std::sync::Arc;
+
+use strangeraft::StorageError;
+use strangeraft::testing::log::StoreBuilder;
+use strangeraft::testing::log::Suite;
+
+use crate::MemLogStore;
+use crate::MemStateMachine;
+use crate::TypeConfig;
+
+struct MemStoreBuilder {}
+
+impl StoreBuilder<TypeConfig, Arc<MemLogStore>, Arc<MemStateMachine>, ()> for MemStoreBuilder {
+    async fn build(&self) -> Result<((), Arc<MemLogStore>, Arc<MemStateMachine>), StorageError<TypeConfig>> {
+        let (log_store, sm) = crate::new_mem_store();
+        Ok(((), log_store, sm))
+    }
+}
+
+#[tokio::test]
+pub async fn test_mem_store() -> Result<(), StorageError<TypeConfig>> {
+    Suite::test_all(MemStoreBuilder {}).await?;
+    Ok(())
+}

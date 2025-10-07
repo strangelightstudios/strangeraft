@@ -23,51 +23,51 @@ use anyerror::AnyError;
 use anyhow::Context;
 use lazy_static::lazy_static;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::LogIdOptionExt;
-use openraft::OptionalSend;
-use openraft::RPCTypes;
-use openraft::Raft;
-use openraft::RaftLogReader;
-use openraft::RaftMetrics;
-use openraft::RaftState;
-use openraft::RaftTypeConfig;
-use openraft::ReadPolicy;
-use openraft::ServerState;
-use openraft::Vote;
-use openraft::error::CheckIsLeaderError;
-use openraft::error::ClientWriteError;
-use openraft::error::Fatal;
-use openraft::error::Infallible;
-use openraft::error::NetworkError;
-use openraft::error::PayloadTooLarge;
-use openraft::error::RPCError;
-use openraft::error::RaftError;
-use openraft::error::ReplicationClosed;
-use openraft::error::StreamingError;
-use openraft::error::Unreachable;
-use openraft::metrics::Wait;
-use openraft::network::RPCOption;
-use openraft::network::RaftNetworkFactory;
-use openraft::raft::AppendEntriesRequest;
-use openraft::raft::AppendEntriesResponse;
-use openraft::raft::ClientWriteResponse;
-use openraft::raft::InstallSnapshotRequest;
-use openraft::raft::SnapshotResponse;
-use openraft::raft::TransferLeaderRequest;
-use openraft::raft::VoteRequest;
-use openraft::raft::VoteResponse;
-use openraft::storage::RaftLogStorage;
-use openraft::storage::RaftStateMachine;
-use openraft::storage::Snapshot;
-use openraft_memstore::ClientRequest;
-use openraft_memstore::ClientResponse;
-use openraft_memstore::IntoMemClientRequest;
-use openraft_memstore::MemLogStore as LogStoreInner;
-use openraft_memstore::MemNodeId;
-use openraft_memstore::MemStateMachine as SMInner;
-use openraft_memstore::TypeConfig;
-use openraft_memstore::TypeConfig as MemConfig;
+use strangeraft::Config;
+use strangeraft::LogIdOptionExt;
+use strangeraft::OptionalSend;
+use strangeraft::RPCTypes;
+use strangeraft::Raft;
+use strangeraft::RaftLogReader;
+use strangeraft::RaftMetrics;
+use strangeraft::RaftState;
+use strangeraft::RaftTypeConfig;
+use strangeraft::ReadPolicy;
+use strangeraft::ServerState;
+use strangeraft::Vote;
+use strangeraft::error::CheckIsLeaderError;
+use strangeraft::error::ClientWriteError;
+use strangeraft::error::Fatal;
+use strangeraft::error::Infallible;
+use strangeraft::error::NetworkError;
+use strangeraft::error::PayloadTooLarge;
+use strangeraft::error::RPCError;
+use strangeraft::error::RaftError;
+use strangeraft::error::ReplicationClosed;
+use strangeraft::error::StreamingError;
+use strangeraft::error::Unreachable;
+use strangeraft::metrics::Wait;
+use strangeraft::network::RPCOption;
+use strangeraft::network::RaftNetworkFactory;
+use strangeraft::raft::AppendEntriesRequest;
+use strangeraft::raft::AppendEntriesResponse;
+use strangeraft::raft::ClientWriteResponse;
+use strangeraft::raft::InstallSnapshotRequest;
+use strangeraft::raft::SnapshotResponse;
+use strangeraft::raft::TransferLeaderRequest;
+use strangeraft::raft::VoteRequest;
+use strangeraft::raft::VoteResponse;
+use strangeraft::storage::RaftLogStorage;
+use strangeraft::storage::RaftStateMachine;
+use strangeraft::storage::Snapshot;
+use strangeraft_memstore::ClientRequest;
+use strangeraft_memstore::ClientResponse;
+use strangeraft_memstore::IntoMemClientRequest;
+use strangeraft_memstore::MemLogStore as LogStoreInner;
+use strangeraft_memstore::MemNodeId;
+use strangeraft_memstore::MemStateMachine as SMInner;
+use strangeraft_memstore::TypeConfig;
+use strangeraft_memstore::TypeConfig as MemConfig;
 #[allow(unused_imports)]
 use pretty_assertions::assert_eq;
 #[allow(unused_imports)]
@@ -194,21 +194,21 @@ impl fmt::Display for Direction {
 
 use Direction::NetRecv;
 use Direction::NetSend;
-use openraft::alias::LogIdOf;
-use openraft::alias::VoteOf;
-use openraft::entry::RaftEntry;
-use openraft::network::v2::RaftNetworkV2;
-use openraft::vote::RaftLeaderId;
-use openraft::vote::RaftLeaderIdExt;
-use openraft::vote::RaftVote;
+use strangeraft::alias::LogIdOf;
+use strangeraft::alias::VoteOf;
+use strangeraft::entry::RaftEntry;
+use strangeraft::network::v2::RaftNetworkV2;
+use strangeraft::vote::RaftLeaderId;
+use strangeraft::vote::RaftLeaderIdExt;
+use strangeraft::vote::RaftVote;
 
 #[derive(Debug, Clone, Copy)]
 pub enum RPCErrorType {
-    /// Returns [`Unreachable`](`openraft::error::Unreachable`).
+    /// Returns [`Unreachable`](`strangeraft::error::Unreachable`).
     Unreachable,
-    /// Returns [`NetworkError`](`openraft::error::NetworkError`).
+    /// Returns [`NetworkError`](`strangeraft::error::NetworkError`).
     NetworkError,
-    /// Returns [`PayloadTooLarge`](`openraft::error::PayloadTooLarge`).
+    /// Returns [`PayloadTooLarge`](`strangeraft::error::PayloadTooLarge`).
     PayloadTooLarge { action: RPCTypes, entries_hint: u64 },
 }
 
@@ -490,7 +490,7 @@ impl TypedRaftRouter {
     }
 
     pub fn new_store(&mut self) -> (MemLogStore, MemStateMachine) {
-        let (log, sm) = openraft_memstore::new_mem_store();
+        let (log, sm) = strangeraft_memstore::new_mem_store();
         log.enable_saving_committed.store(self.enable_saving_committed, Ordering::Relaxed);
         (log, sm)
     }
@@ -546,7 +546,7 @@ impl TypedRaftRouter {
         self.set_rpc_failure(id, NetSend, v);
     }
 
-    /// Set to `true` to return [`Unreachable`](`openraft::errors::Unreachable`) when sending RPC to
+    /// Set to `true` to return [`Unreachable`](`strangeraft::errors::Unreachable`) when sending RPC to
     /// a node.
     pub fn set_unreachable(&self, id: MemNodeId, unreachable: bool) {
         let v = if unreachable {

@@ -3,11 +3,11 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::impls::TokioRuntime;
-use openraft::type_config::AsyncRuntime;
-use openraft::type_config::TypeConfigExt;
-use openraft_memstore::TypeConfig;
+use strangeraft::Config;
+use strangeraft::impls::TokioRuntime;
+use strangeraft::type_config::AsyncRuntime;
+use strangeraft::type_config::TypeConfigExt;
+use strangeraft_memstore::TypeConfig;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::ut_harness;

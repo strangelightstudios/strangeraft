@@ -3,11 +3,11 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::ServerState;
-use openraft::error::ClientWriteError;
-use openraft_memstore::ClientRequest;
-use openraft_memstore::IntoMemClientRequest;
+use strangeraft::Config;
+use strangeraft::ServerState;
+use strangeraft::error::ClientWriteError;
+use strangeraft_memstore::ClientRequest;
+use strangeraft_memstore::IntoMemClientRequest;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;

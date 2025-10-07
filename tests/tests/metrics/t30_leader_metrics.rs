@@ -4,8 +4,8 @@ use std::time::Duration;
 use anyhow::Result;
 use maplit::btreemap;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::ServerState;
+use strangeraft::Config;
+use strangeraft::ServerState;
 #[allow(unused_imports)]
 use pretty_assertions::assert_eq;
 #[allow(unused_imports)]

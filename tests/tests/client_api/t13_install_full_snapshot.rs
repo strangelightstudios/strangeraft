@@ -2,8 +2,8 @@ use std::sync::Arc;
 use std::time::Duration;
 
 use maplit::btreeset;
-use openraft::Config;
-use openraft::Vote;
+use strangeraft::Config;
+use strangeraft::Vote;
 
 use crate::fixtures::RaftRouter;
 use crate::fixtures::log_id;

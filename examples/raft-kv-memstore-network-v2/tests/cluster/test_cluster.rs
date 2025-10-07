@@ -3,7 +3,7 @@ use std::collections::BTreeMap;
 use std::panic::PanicHookInfo;
 use std::time::Duration;
 
-use openraft::BasicNode;
+use strangeraft::BasicNode;
 use raft_kv_memstore_network_v2::new_raft;
 use raft_kv_memstore_network_v2::router::Router;
 use raft_kv_memstore_network_v2::store::Request;

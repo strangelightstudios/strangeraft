@@ -3,8 +3,8 @@ use std::time::Duration;
 
 use anyhow::Result;
 use maplit::btreeset;
-use openraft::Config;
-use openraft::RaftLogReader;
+use strangeraft::Config;
+use strangeraft::RaftLogReader;
 use tokio::time::sleep;
 
 use crate::fixtures::RaftRouter;

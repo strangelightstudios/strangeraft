@@ -1,8 +1,8 @@
 use std::sync::Arc;
 
-use openraft::testing::log::StoreBuilder;
-use openraft::testing::log::Suite;
-use openraft::StorageError;
+use strangeraft::testing::log::StoreBuilder;
+use strangeraft::testing::log::Suite;
+use strangeraft::StorageError;
 
 use crate::store::LogStore;
 use crate::store::StateMachineStore;

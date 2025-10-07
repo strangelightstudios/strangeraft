@@ -6,8 +6,8 @@ use std::time::Duration;
 
 use maplit::btreemap;
 use maplit::btreeset;
-use openraft::error::Infallible;
-use openraft::BasicNode;
+use strangeraft::error::Infallible;
+use strangeraft::BasicNode;
 use raft_kv_memstore_singlethreaded::router::Router;
 use raft_kv_memstore_singlethreaded::start_raft;
 use raft_kv_memstore_singlethreaded::store::Request;
